@@ -1,9 +1,9 @@
-# 🚀🔐🔥 Starter Next.js App With Auth Using Firebase, React, TypeScript & Recoil
+# 🚀 Starter Next.js App With Auth
 
-This repo is a starter to initialize a Next.js application with a functional authentication system using Firebase v9. 
-It's completely free to use so don't hesitate to clone or fork this repo and kickstart your next project.
+This repo is a starter to initialize a Next.js application with a fully functional authentication system using Firebase v9. It's using TypeScript, React, Recoil and Tailwind CSS.
+It's completely free to use so don't hesitate to clone or fork this repo and kickstart your next project in minutes 🔥
 
-If you're interested in learning the concepts used in this repo, I wrote a complete guide to managing auth state in React + TypeScript application with Firebase and Recoil.
+If you're interested in learning the concepts used in this repo, I wrote a complete guide to managing auth state in a React application with Firebase and Recoil.
 
 **🚧 This project and its associated article are work in progress 🚧**
 
