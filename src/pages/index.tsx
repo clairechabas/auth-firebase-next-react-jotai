@@ -21,7 +21,7 @@ const Home = () => {
         <Image
           width="90px"
           alignSelf="center"
-          src="react-firebase.svg"
+          src="images/react-firebase.svg"
           alt="Firebase React Logo"
         />
         <Heading fontSize="20pt" fontWeight={700} mt={5}>
