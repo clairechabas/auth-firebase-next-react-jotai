@@ -1,7 +1,10 @@
-import { Button, Flex, Heading, Text } from '@chakra-ui/react'
+import AuthButtons from '@/components/AuthButtons'
+import { auth } from '@/firebase/app'
+import { Flex, Heading, Image, Text } from '@chakra-ui/react'
+import { useAuthState } from 'react-firebase-hooks/auth'
 
 const Home = () => {
-  const handleClick = () => {}
+  const [user] = useAuthState(auth)
 
   return (
     <Flex
@@ -14,45 +17,26 @@ const Home = () => {
       height="100vh"
       mx="auto"
     >
-      <Flex w="full" direction="column" textAlign="center">
-        <Heading fontSize="20pt" fontWeight={700}>
-          🏡 Home
+      <Flex w="full" direction="column" align="stretch" textAlign="center">
+        <Image
+          width="90px"
+          alignSelf="center"
+          src="react-firebase.svg"
+          alt="Firebase React Logo"
+        />
+        <Heading fontSize="20pt" fontWeight={700} mt={5}>
+          Home
         </Heading>
         <Text fontSize="14pt" mt={16}>
-          🙅‍♀️ You are not signed in/👋 Hi UserName, welcome back!
+          {user
+            ? `👋 Hi ${user?.displayName}, welcome back!`
+            : '🙅‍♀️ You are not signed in yet.'}
         </Text>
-        <Flex mt={16} gap={5} justify="space-between" align="center">
-          <Button w="full" h="50px" colorScheme="purple" onClick={handleClick}>
-            Log In
-          </Button>
-          <Button
-            w="full"
-            h="50px"
-            colorScheme="purple"
-            variant="outline"
-            onClick={handleClick}
-          >
-            Sign up
-          </Button>
 
-          {/* If user is signed in replace buttons with sign out button
-          <button>Log Out</button> */}
+        <Flex mt={16}>
+          <AuthButtons />
         </Flex>
       </Flex>
-
-      {/* Disabled if user is not signed in */}
-      <Button
-        border="1px solid black"
-        isDisabled={true}
-        onClick={handleClick}
-        colorScheme="purple"
-        w="full"
-        h="50px"
-        mt={32}
-      >
-        🔐 Confettis/🎉 Confettis
-      </Button>
-      {/* </main> */}
     </Flex>
   )
 }
