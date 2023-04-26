@@ -1,5 +1,5 @@
 {
-  "name": "auth-next-react-recoil-firebase",
+  "name": "auth-firebase-next-react-jotai",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,14 +10,18 @@
   },
   "dependencies": {
     "@chakra-ui/react": "^2.5.5",
+    "@fontsource/inter": "^4.5.15",
     "@types/node": "18.16.0",
     "@types/react": "18.0.38",
     "@types/react-dom": "18.0.11",
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.1",
+    "firebase": "^9.20.0",
+    "jotai": "^2.0.4",
     "next": "13.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-firebase-hooks": "^5.1.1",
     "typescript": "5.0.4"
   }
 }
