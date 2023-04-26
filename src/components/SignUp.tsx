@@ -50,7 +50,7 @@ const SignUp: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Flex direction="column" w="full" gap={3}>
+      <Flex direction="column" w="full">
         <Input
           required
           name="email"
@@ -66,6 +66,7 @@ const SignUp: React.FC = () => {
           type="password"
           onChange={handleChange}
           size="md"
+          mt={3}
         />
         <Input
           required
@@ -74,6 +75,7 @@ const SignUp: React.FC = () => {
           type="password"
           onChange={handleChange}
           size="md"
+          my={3}
         />
 
         {(error || fbError) && (
@@ -82,7 +84,7 @@ const SignUp: React.FC = () => {
           </Text>
         )}
 
-        <Button type="submit" isLoading={loading}>
+        <Button mt={3} type="submit" isLoading={loading}>
           Sign Up
         </Button>
       </Flex>

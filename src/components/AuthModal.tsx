@@ -1,6 +1,7 @@
 import { auth } from '@/firebase/app'
 import { authModalState, AuthModalView } from '@/store/authModalAtom'
 import {
+  Button,
   Flex,
   Link,
   Modal,
@@ -15,8 +16,9 @@ import {
 import { useAtom } from 'jotai'
 import React, { useEffect } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import LogIn from './LogIn'
 import ResetPassword from './ResetPassword'
+import LogIn from './SignInWithEmailPassword'
+import SignInWithMagicLink from './SignInWithMagicLink'
 import SignInWithProvider from './SignInWithProvider'
 import SignUp from './SignUp'
 
@@ -45,6 +47,8 @@ const AuthModal: React.FC = () => {
           <ModalHeader textAlign="center" color="ocean-dark">
             {modalState.view === AuthModalView.logIn && 'Log In'}
             {modalState.view === AuthModalView.signUp && 'Sign Up'}
+            {modalState.view === AuthModalView.signInWithLink &&
+              'Sign-In With Magic Link'}
             {modalState.view === AuthModalView.resetPassword &&
               'Reset Password'}
           </ModalHeader>
@@ -68,12 +72,27 @@ const AuthModal: React.FC = () => {
                 <>
                   <SignInWithProvider />
 
-                  <Text color="ocean-dark" fontWeight={700}>
-                    OR
-                  </Text>
+                  <Text fontWeight={700}>OR</Text>
+
+                  <Button
+                    variant="solid"
+                    onClick={() =>
+                      setModalState((prev) => ({
+                        ...prev,
+                        view: AuthModalView.signInWithLink,
+                      }))
+                    }
+                  >
+                    Sign-in With Magic Link
+                  </Button>
+
+                  <Text fontWeight={700}>OR</Text>
 
                   <LogIn />
                 </>
+              )}
+              {modalState.view === AuthModalView.signInWithLink && (
+                <SignInWithMagicLink />
               )}
               {modalState.view === AuthModalView.signUp && <SignUp />}
               {modalState.view === AuthModalView.resetPassword && (
@@ -82,42 +101,57 @@ const AuthModal: React.FC = () => {
             </Flex>
           </ModalBody>
 
-          <ModalFooter mx="auto" fontSize="10pt" pt={1}>
-            {modalState.view === AuthModalView.logIn && (
-              <Flex justify="center" width="full">
-                <Text>New here?</Text>
-                <Link
-                  color="primary.100"
-                  textDecoration="underline"
-                  _hover={{ textDecoration: 'none' }}
-                  ml={1}
-                  onClick={() =>
-                    setModalState((prev) => ({
-                      ...prev,
-                      view: AuthModalView.signUp,
-                    }))
-                  }
-                >
-                  Create an account
-                </Link>
-                <Text mx={2}>|</Text>
-                <Text>Forgot password?</Text>
-                <Link
-                  color="primary.100"
-                  textDecoration="underline"
-                  _hover={{ textDecoration: 'none' }}
-                  ml={1}
-                  onClick={() =>
-                    setModalState((prev) => ({
-                      ...prev,
-                      view: AuthModalView.resetPassword,
-                    }))
-                  }
-                >
-                  Reset password
-                </Link>
-              </Flex>
-            )}
+          <ModalFooter mx="auto" fontSize="10pt" pt={5}>
+            <Flex justify="center" width="full">
+              {(modalState.view === AuthModalView.logIn ||
+                modalState.view === AuthModalView.signUp) && (
+                <Text>
+                  {modalState.view === AuthModalView.signUp
+                    ? 'Have an account?'
+                    : 'New here?'}
+                </Text>
+              )}
+              <Link
+                color="primary.100"
+                _hover={{ color: 'primary.80' }}
+                ml={1}
+                onClick={() =>
+                  setModalState((prev) => ({
+                    ...prev,
+                    view:
+                      modalState.view !== AuthModalView.logIn
+                        ? AuthModalView.logIn
+                        : AuthModalView.signUp,
+                  }))
+                }
+              >
+                {modalState.view === AuthModalView.signUp && 'Log In'}
+                {modalState.view === AuthModalView.logIn && 'Create an account'}
+                {(modalState.view === AuthModalView.resetPassword ||
+                  modalState.view === AuthModalView.signInWithLink) &&
+                  '< Back to Log In'}
+              </Link>
+              {(modalState.view === AuthModalView.signUp ||
+                modalState.view === AuthModalView.logIn) && (
+                <>
+                  <Text mx={2}>|</Text>
+                  <Text>Forgot password?</Text>
+                  <Link
+                    color="primary.100"
+                    _hover={{ color: 'primary.80' }}
+                    ml={1}
+                    onClick={() =>
+                      setModalState((prev) => ({
+                        ...prev,
+                        view: AuthModalView.resetPassword,
+                      }))
+                    }
+                  >
+                    Reset password
+                  </Link>
+                </>
+              )}
+            </Flex>
           </ModalFooter>
         </ModalContent>
       </Modal>
