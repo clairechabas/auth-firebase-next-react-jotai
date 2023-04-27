@@ -13,7 +13,7 @@ const SignInWithMagicLink: React.FC = () => {
   const setAuthModalState = useSetAtom(authModalState)
 
   const actionCodeSettings = {
-    url: 'https://auth-firebase-next-react-jotai-hsl8duqgb-clairechabas.vercel.app/sign-in-with-link',
+    url: process.env.NEXT_PUBLIC_FIREBASE_MAGIC_LINK_CONTINUE_URL as string,
     handleCodeInApp: true,
   }
 
