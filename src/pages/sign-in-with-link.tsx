@@ -20,7 +20,10 @@ const SignInWithLinkPage: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    // signInAndRedirect()
+    signInAndRedirect()
+  }
+
+  const signInAndRedirect = async () => {
     await signInWithEmailLink(email, window.location.href)
 
     window.localStorage.removeItem('emailForSignIn')
@@ -28,20 +31,15 @@ const SignInWithLinkPage: React.FC = () => {
     console.log('signed in!')
   }
 
-  const signInAndRedirect = async () => {
-    await signInWithEmailLink(email, window.location.href)
-
-    window.localStorage.removeItem('emailForSignIn')
-    router.push('/')
-  }
-
   useEffect(() => {
     const emailFromStorage = window.localStorage.getItem('emailForSignIn')
-    console.log('emailFromStorage', emailFromStorage)
-    // if (emailFromStorage) {
-    //   setEmail(emailFromStorage)
-    //   signInAndRedirect()
-    // } else {
+
+    if (emailFromStorage) {
+      // setEmail(emailFromStorage)
+      console.log('emailFromStorage', emailFromStorage)
+      // signInAndRedirect()
+    }
+    // else {
     //   setEmail('')
     // }
   }, [])
@@ -68,7 +66,7 @@ const SignInWithLinkPage: React.FC = () => {
           Signing In With Magic Link
         </Heading>
 
-        {email ? (
+        {loading ? (
           <Text
             fontSize="12pt"
             mt={16}

@@ -23,6 +23,11 @@ const SignInWithMagicLink: React.FC = () => {
     await sendSignInLinkToEmail(email, actionCodeSettings)
 
     window.localStorage.setItem('emailForSignIn', email)
+    console.log('emailForSignIn: ', email)
+    console.log(
+      'checking localstorage: ',
+      window.localStorage.getItem('emailForSignIn')
+    )
 
     setIsSuccess(true)
   }
