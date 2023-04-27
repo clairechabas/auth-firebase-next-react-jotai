@@ -24,11 +24,14 @@ const SignInWithLinkPage: React.FC = () => {
   }
 
   const signInAndRedirect = async () => {
+    const emailFromStorage = window.localStorage.getItem('emailForSignIn')
+    console.log('emailFromStorage', emailFromStorage)
+
     await signInWithEmailLink(email, window.location.href)
 
     window.localStorage.removeItem('emailForSignIn')
-    // router.push('/')
     console.log('signed in!')
+    router.push('/')
   }
 
   useEffect(() => {
