@@ -6,7 +6,7 @@ admin.initializeApp()
 const db = admin.firestore()
 
 /**
- * Create a user in firestore each time a new user signs up.
+ * Create user in Firestore on user account creation through Firebase Auth.
  */
 export const createUserDocument = functions.auth
   .user()
@@ -23,4 +23,13 @@ export const createUserDocument = functions.auth
     }
 
     db.collection('users').doc(user.uid).set(newUser)
+  })
+
+/**
+ * Delete user in Firestore on user account deletion through Firebase Auth.
+ */
+export const deleteUserDocument = functions.auth
+  .user()
+  .onDelete(async (user) => {
+    db.collection('users').doc(user.uid).delete()
   })
