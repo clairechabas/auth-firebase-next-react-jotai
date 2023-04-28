@@ -31,7 +31,9 @@ yarn install
 # or
 pnpm install
 ```
+
 <br />
+
 2. Create a new project in Firebase and set it up for Firebase Auth, Functions and Firestore.
 
 <br />
