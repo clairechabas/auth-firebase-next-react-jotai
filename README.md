@@ -38,9 +38,7 @@ pnpm install
 
 <br />
 
-3. Set the environment variables
-
-Copy the `.env.example` into a `.env.local` file and set each variable with your own values.
+3. Set the environment variables: copy the `.env.example` into a `.env.local` file and set each variable with your own values.
 
 <br />
 
@@ -71,6 +69,8 @@ yarn dev
 # or
 pnpm dev
 ```
+
+<br />
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
