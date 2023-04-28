@@ -5,6 +5,7 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 
 const Home = () => {
   const [user] = useAuthState(auth)
+  console.log('Home: user', user)
 
   return (
     <Flex
@@ -29,7 +30,7 @@ const Home = () => {
         </Heading>
         <Text fontSize="14pt" mt={16}>
           {user
-            ? `👋 Hi ${user?.displayName}, welcome back!`
+            ? `👋 Hi ${user?.displayName}, welcome!`
             : '🙅‍♀️ You are not signed in yet.'}
         </Text>
 

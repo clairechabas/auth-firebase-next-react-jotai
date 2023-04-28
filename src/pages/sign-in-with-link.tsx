@@ -39,6 +39,7 @@ const SignInWithLinkPage: React.FC = () => {
   }
 
   useEffect(() => {
+    console.log('useEffect')
     const emailFromStorage = window.localStorage.getItem('emailForSignIn')
     console.log('emailFromStorage', emailFromStorage)
 
