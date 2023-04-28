@@ -17,7 +17,35 @@ If you're interested in learning the concepts used in this repo, I wrote a compl
 
 ## Getting Started
 
-First, clone this repo, install the dependencies and run the development server:
+1. Clone this repo and install the dependencies:
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+2. Create a new project in Firebase and set it up for Firebase Auth, Functions and Firestore.
+
+3. Set the environment variables
+Copy the `.env.example` into a `.env.local` file and set each variable with your own values.
+
+4. Install the Firebase CLI
+```bash
+npm install -g firebase-tools
+# or
+yarn global add firebase-tools
+# or
+pnpm add -g firebase-tools
+```
+
+4. Deploy the Firebase Cloud Functions
+```bash
+firebase deploy --only functions
+```
+
+5. Run the development server:
 
 ```bash
 npm run dev
@@ -29,5 +57,10 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+<br/>
+
+![Preview of the home page and modal in sign-in view](./public/images/preview.png "Preview of the home page and modal in sign-in view.")
+
+<br/>
 
 Enjoy!
