@@ -8,6 +8,8 @@ If you're interested in learning the concepts used in this repo, I wrote a compl
 
 **☝️ This project would be better suited for production with tests. I will add those incrementally. Stay tuned.**
 
+<br />
+
 ## Features
 - Sign-up/sign-in with email/password
 - Sign-in with Google
@@ -16,6 +18,8 @@ If you're interested in learning the concepts used in this repo, I wrote a compl
 - Sign out
 - Add/remove user in Firestore on account creation/deletion with Firebase Cloud Functions
 - Auth modal state management with Jotai
+
+<br />
 
 ## Getting Started
 
@@ -27,12 +31,12 @@ yarn install
 # or
 pnpm install
 ```
-
+<br />
 2. Create a new project in Firebase and set it up for Firebase Auth, Functions and Firestore.
-
+<br />
 3. Set the environment variables
 Copy the `.env.example` into a `.env.local` file and set each variable with your own values.
-
+<br />
 4. Install the Firebase CLI
 ```bash
 npm install -g firebase-tools
@@ -41,13 +45,13 @@ yarn global add firebase-tools
 # or
 pnpm add -g firebase-tools
 ```
-
-4. Deploy the Firebase Cloud Functions
+<br />
+5. Deploy the Firebase Cloud Functions
 ```bash
 firebase deploy --only functions
 ```
-
-5. Run the development server:
+<br />
+6. Run the development server:
 
 ```bash
 npm run dev
