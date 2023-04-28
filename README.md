@@ -4,16 +4,18 @@ This repo is a starter to initialize a Next.js application with a fully function
 
 Feel free to clone or fork this repo to kickstart your next project in minutes 🔥
 
-If you're interested in learning the concepts used in this repo, I wrote a complete guide to set up and manage auth in a React application with Firebase and Jotai.
+If you're interested in learning the concepts used in this repo, I wrote a complete guide to set up and manage auth in a React application with Firebase and Jotai. I will add the link here when it's published.
 
-**🚧 This project and its associated article are work in progress 🚧**
+**☝️ This project would be better suited for production with tests. I will add those incrementally. Stay tuned. **
 
 ## Features
 - Sign-up/sign-in with email/password
 - Sign-in with Google
 - Sign-in with magic link
 - Reset password
-- Create user in Firestore on sign-up with Cloud Functions
+- Sign out
+- Add/remove user in Firestore on account creation/deletion with Firebase Cloud Functions
+- Auth modal state management with Jotai
 
 ## Getting Started
 
