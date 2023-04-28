@@ -33,10 +33,14 @@ pnpm install
 ```
 <br />
 2. Create a new project in Firebase and set it up for Firebase Auth, Functions and Firestore.
+
 <br />
+
 3. Set the environment variables
 Copy the `.env.example` into a `.env.local` file and set each variable with your own values.
+
 <br />
+
 4. Install the Firebase CLI
 ```bash
 npm install -g firebase-tools
@@ -45,12 +49,16 @@ yarn global add firebase-tools
 # or
 pnpm add -g firebase-tools
 ```
+
 <br />
+
 5. Deploy the Firebase Cloud Functions
 ```bash
 firebase deploy --only functions
 ```
+
 <br />
+
 6. Run the development server:
 
 ```bash
