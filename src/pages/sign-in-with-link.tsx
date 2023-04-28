@@ -24,27 +24,29 @@ const SignInWithLinkPage: React.FC = () => {
   }
 
   const signInAndRedirect = async () => {
-    const emailFromStorage = window.localStorage.getItem('emailForSignIn')
-    console.log('emailFromStorage', emailFromStorage)
-
     await signInWithEmailLink(email, window.location.href)
 
     window.localStorage.removeItem('emailForSignIn')
+
     console.log('signed in!')
+    console.log(
+      'email from local storage should be empty: ',
+      window.localStorage.getItem('emailForSignIn')
+    )
+
+    // Redirect user to home page
     router.push('/')
   }
 
   useEffect(() => {
     const emailFromStorage = window.localStorage.getItem('emailForSignIn')
+    console.log('emailFromStorage', emailFromStorage)
 
     if (emailFromStorage) {
-      // setEmail(emailFromStorage)
+      setEmail(emailFromStorage)
       console.log('emailFromStorage', emailFromStorage)
-      // signInAndRedirect()
+      signInAndRedirect()
     }
-    // else {
-    //   setEmail('')
-    // }
   }, [])
 
   return (
