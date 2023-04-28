@@ -20,33 +20,30 @@ const SignInWithLinkPage: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    signInAndRedirect()
+    signInAndRedirect(email)
   }
 
-  const signInAndRedirect = async () => {
-    await signInWithEmailLink(email, window.location.href)
+  const signInAndRedirect = async (email: string) => {
+    try {
+      const currentUrl = `${window.location.origin}${router.asPath}`
 
-    window.localStorage.removeItem('emailForSignIn')
+      await signInWithEmailLink(email, currentUrl)
 
-    console.log('signed in!')
-    console.log(
-      'email from local storage should be empty: ',
-      window.localStorage.getItem('emailForSignIn')
-    )
+      // Clean localStorage
+      window.localStorage.removeItem('emailForSignIn')
 
-    // Redirect user to home page
-    router.push('/')
+      // Redirect user to home page
+      await router.push('/')
+    } catch (error) {
+      console.log('Error in signInAndRedirect: ', error)
+    }
   }
 
   useEffect(() => {
-    console.log('useEffect')
     const emailFromStorage = window.localStorage.getItem('emailForSignIn')
-    console.log('emailFromStorage', emailFromStorage)
 
     if (emailFromStorage) {
-      setEmail(emailFromStorage)
-      console.log('emailFromStorage', emailFromStorage)
-      signInAndRedirect()
+      signInAndRedirect(emailFromStorage)
     }
   }, [])
 
@@ -71,12 +68,10 @@ const SignInWithLinkPage: React.FC = () => {
         <Heading fontSize="20pt" fontWeight={700} mt={5}>
           Signing In With Magic Link
         </Heading>
-
         {loading ? (
-          <Text
-            fontSize="12pt"
-            mt={16}
-          >{`Wait while we're authenticating you...`}</Text>
+          <Text fontSize="12pt" mt={16}>
+            {`⏱️ Wait while we're authenticating you...`}
+          </Text>
         ) : (
           <>
             <Text fontSize="12pt" mt={16}>

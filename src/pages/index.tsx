@@ -1,11 +1,10 @@
 import AuthButtons from '@/components/AuthButtons'
 import { auth } from '@/firebase/app'
 import { Flex, Heading, Image, Text } from '@chakra-ui/react'
-import { useAuthState } from 'react-firebase-hooks/auth'
+import { useIdToken } from 'react-firebase-hooks/auth'
 
 const Home = () => {
-  const [user] = useAuthState(auth)
-  console.log('Home: user', user)
+  const [user, loading] = useIdToken(auth)
 
   return (
     <Flex
@@ -29,9 +28,9 @@ const Home = () => {
           Home
         </Heading>
         <Text fontSize="14pt" mt={16}>
-          {user
-            ? `👋 Hi ${user?.displayName}, welcome!`
-            : '🙅‍♀️ You are not signed in yet.'}
+          {loading && '🕒 Checking authentication...'}
+          {!loading && user && `👋 Hi ${user?.email}, welcome!`}
+          {!user && '🙅‍♀️ You are not signed in yet.'}
         </Text>
 
         <Flex mt={16}>

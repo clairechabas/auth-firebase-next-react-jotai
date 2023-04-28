@@ -22,12 +22,8 @@ const SignInWithMagicLink: React.FC = () => {
 
     await sendSignInLinkToEmail(email, actionCodeSettings)
 
+    // Temporarily store user's email in localStorage for match-check on sign-in page
     window.localStorage.setItem('emailForSignIn', email)
-    console.log('actionCodeSettings', actionCodeSettings)
-    console.log(
-      'checking localstorage: ',
-      window.localStorage.getItem('emailForSignIn')
-    )
 
     setIsSuccess(true)
   }
@@ -36,7 +32,7 @@ const SignInWithMagicLink: React.FC = () => {
     <Flex direction="column" w="full">
       {isSuccess ? (
         <>
-          <Text mt={3}>{`Check your email :)`}</Text>
+          <Text mt={3}>Check your email 💌</Text>
           <Button
             variant="solid"
             mt={5}
@@ -49,10 +45,7 @@ const SignInWithMagicLink: React.FC = () => {
         </>
       ) : (
         <>
-          <Text>
-            {`Enter the email associated with your account and we'll send you a
-             link to log in.`}
-          </Text>
+          <Text>Enter your email and we will send you a link to sign in.</Text>
 
           <form onSubmit={handleSubmit}>
             <Input
@@ -63,6 +56,9 @@ const SignInWithMagicLink: React.FC = () => {
               onChange={(e) => setEmail(e.target.value)}
               mt={3}
             />
+
+            {fbError && <Text>{fbError.message}</Text>}
+
             <Button
               type="submit"
               isLoading={sending}
