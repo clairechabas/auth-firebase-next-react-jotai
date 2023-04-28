@@ -39,6 +39,7 @@ pnpm install
 <br />
 
 3. Set the environment variables
+
 Copy the `.env.example` into a `.env.local` file and set each variable with your own values.
 
 <br />
