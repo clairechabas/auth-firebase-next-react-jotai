@@ -1,10 +1,10 @@
 import AuthButtons from '@/components/AuthButtons'
 import { auth } from '@/firebase/app'
 import { Flex, Heading, Image, Text } from '@chakra-ui/react'
-import { useIdToken } from 'react-firebase-hooks/auth'
+import { useAuthState } from 'react-firebase-hooks/auth'
 
 const Home = () => {
-  const [user, loading] = useIdToken(auth)
+  const [user, loading] = useAuthState(auth)
 
   return (
     <Flex
