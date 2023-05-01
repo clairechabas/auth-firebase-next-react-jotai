@@ -4,7 +4,7 @@ This repo is a starter to initialize a Next.js application with a fully function
 
 Feel free to clone or fork this repo to kickstart your next project in minutes 🔥
 
-If you're interested in learning the concepts used in this repo, I wrote a complete guide to set up and manage auth in a React application with Firebase and Jotai. I will add the link here when it's published.
+If you're interested in learning the concepts used in this repo, I'm giving the final touch to a complete guide to set up and manage auth in a Next.js + React application with Firebase and Jotai. I will add the link here when it's published.
 
 **☝️ This project would be better suited for production with tests. I will add those incrementally. Stay tuned.**
 
